@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4>Lista użytkowników portalu:</h4>
+
+<ul class="list-group">
+        {% for row in persons %}
+        <li onclick="location.href='person/info?name={{ row[0]['data']['name'] }}'" class="list-group-item list-group-item-action">{{ row[0]['data']['name'] }}</li>
+        {% endfor %}
+</ul>
+<br>
+<h4>Lista miast:</h4>
+
+<ul class="list-group">
+        {% for row in locations %}
+        <li onclick="location.href='city/info?city={{ row[0]['data']['city'] }}&state={{ row[0]['data']['state'] }}'" class="list-group-item list-group-item-action">Miasto: {{ row[0]['data']['city'] }}, Województwo: {{ row[0]['data']['state'] }}</li>
+        {% endfor %}
+</ul>
+
+{% endblock %}

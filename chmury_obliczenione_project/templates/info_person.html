@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Użytkownik {{ name }}:</h2>
+<br>
+<h4>Miejsce zamieszkania:</h4>
+{% if residentcity[0][0] %}
+Miasto: {{ residentcity[0][0] }}, Województwo: {{ residentcity[0][1] }}
+{% else %}
+Nie podano.
+{%endif %}
+<br>
+<h4>Lista znajomych:</h4>
+
+{% if friends[0][0] %}
+<ul class="list-group">
+        {% for row in friends %}
+            <li onclick="location.href='/person/info?name={{ row[0]['data']['name'] }}'" class="list-group-item list-group-item-action">{{ row[0]['data']['name'] }}</li>
+        {% endfor %}
+</ul>
+{% else %}
+Brak 
+{%endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Wybierz miasto do usunięcia:</h2>
+
+<form action="{{ url_for('delete_location') }}" method="post">
+<div class="input-group">
+    <select name="location" class="custom-select">
+        {% for row in locations %}
+        <option value="{{ row[0]['data']['city'], row[0]['data']['state'] }}" class="list-group-item">Miasto: {{ row[0]['data']['city'] }}, Województwo: {{ row[0]['data']['state'] }}</option>
+        {% endfor %}
+    </select>
+    <div class="input-group-append">
+        <input type="submit" value="Usuń lokację" class="btn btn-outline-secondary btn-style">
+    </div>
+</div>
+</form>
+
+{% endblock %}

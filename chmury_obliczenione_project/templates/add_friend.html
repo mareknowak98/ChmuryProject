@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Dodaj znajomość pomiędzy użytkownikami:</h2>
+
+<form action="{{ url_for('add_friend') }}" method="post">
+<div class="input-group">
+    <select name="person1" class="custom-select">
+        {% for row in persons1 %}
+        <option value="{{ row[0]['data']['name'] }}" class="list-group-item">{{ row[0]['data']['name'] }}</option>
+        {% endfor %}
+    </select>
+    <select name="person2" class="custom-select">
+        {% for row in persons2 %}
+        <option value="{{ row[0]['data']['name'] }}" class="list-group-item">{{ row[0]['data']['name'] }}</option>
+        {% endfor %}
+    </select>
+    <div class="input-group-append">
+        <input type="submit" value="Dodaj znajmość" class="btn btn-outline-secondary btn-style">
+    </div>
+</div>
+</form>
+
+{% endblock %}

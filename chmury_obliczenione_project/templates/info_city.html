@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dane dla miasta {{ city['city'] }} </h2>
+<h4>Lista mieszkańców:</h4>
+
+{% if city %}
+<ul class="list-group">
+        {% for row in people_live_in %}
+            <li onclick="location.href='/person/info?name={{ row[0]}}'" class="list-group-item list-group-item-action">{{ row[0] }}</li>
+        {% endfor %}
+</ul>
+{% else %}
+Brak
+{%endif %}
+
+{% if city %}
+<h4>Lista odległości od innych miast:</h4>
+<ul class="list-group">
+        {% for row in distances %}
+            <li class="list-group-item list-group-item-action">{{ row }}, dystans: {{ distances[row] }}</li>
+        {% endfor %}
+</ul>
+{% else %}
+Brak
+{%endif %}
+
+
+{% endblock %}

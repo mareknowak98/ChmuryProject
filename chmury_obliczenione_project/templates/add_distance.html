@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dodaj odległość: </h2>
+
+
+<form action="{{ url_for('add_distance') }}" method="post">
+<div class="input-group">
+    <select name="city1" class="custom-select">
+        {% for row in city1 %}
+        <option value="{{ row[0]['data'] }}" class="list-group-item">{{ row[0]['data']['city'] }}</option>
+        {% endfor %}
+    </select>
+    <select name="city2" class="custom-select">
+        {% for row in city2 %}
+        <option value="{{ row[0]['data'] }}" class="list-group-item">{{ row[0]['data']['city'] }}</option>
+        {% endfor %}
+    </select>
+    <input name="dist" class="form-control" type="text" placeholder="Dystans:">
+
+    <div class="input-group-append">
+        <input type="submit" value="Dodaj odległość" class="btn btn-outline-secondary btn-style">
+    </div>
+</div>
+</form>
+
+{% endblock %}
